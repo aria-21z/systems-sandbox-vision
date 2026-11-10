@@ -1,106 +1,279 @@
+
 <!DOCTYPE html>
 <html lang="en">
- 
-.command-panel {
-    max-width: 1000px;
-    margin: 70px auto;
-    padding: 25px;
-}
 
-.command-panel h2 {
-    color: #67e8f9;
-    letter-spacing: 3px;
-}
-
-.world-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
-    margin-top: 35px;
-}
-
-.world-card {
-    background: rgba(18, 39, 64, 0.8);
-    border: 1px solid #256078;
-    border-radius: 15px;
-    padding: 30px 15px;
-}
-
-.world-card h3 {
-    color: #67e8f9;
-    letter-spacing: 2px;
-}
-
-.world-card p {
-    font-size: 15px;
-}
-
-.planet {
-    font-size: 55px;
-}   
-<style> 
-    /* this is for styling, adding the background color etc */
-    body {
-        background: radial-gradient(
-            circle at top,
-            #142b46,
-            #050914 75%
-        );
-        color: white;
-        font-family: Arial, sans-serif;
-        text-align: center;
-        min-height: 100vh;
-        margin: 0;
-        padding-top: 150px;
-        box-sizing: border-box;
-    }
-
-    h1 {
-        color: #67e8f9;
-        font-size: 52px;
-        letter-spacing: 5px;
-        text-shadow: 0 0 25px #0891b2;
-    }
-
-    p {
-        color: #a5b4c8;
-        font-size: 20px;
-    }
-</style>
+<!-- =========================================
+     SECTION 1: HEAD
+     This contains information about our webpage.
+     ========================================= -->
 
 <head>
     <meta charset="UTF-8">
+
+    <!-- Makes the website fit different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- This is the name shown on the browser tab -->
     <title>Systems Sandbox</title>
+
+
+    <!-- =========================================
+         SECTION 2: CSS STYLING
+         CSS controls how our website LOOKS.
+         Everything inside <style> is CSS.
+         ========================================= -->
+
+    <style>
+
+        /* -----------------------------------------
+           2.1 BODY
+           Controls the overall page appearance.
+           ----------------------------------------- */
+
+        body {
+            /* Dark space-themed background */
+            background: radial-gradient(
+                circle at top,
+                #142b46,
+                #050914 75%
+            );
+
+            /* Default text colour */
+            color: white;
+
+            /* Font used throughout the website */
+            font-family: Arial, sans-serif;
+
+            /* Centre the text */
+            text-align: center;
+
+            /* Make the background fill the screen */
+            min-height: 100vh;
+
+            /* Remove default browser margins */
+            margin: 0;
+
+            /* Space above the website content */
+            padding: 100px 20px 40px;
+
+            /* Keep padding inside the element's width */
+            box-sizing: border-box;
+        }
+
+
+        /* -----------------------------------------
+           2.2 MAIN TITLE
+           Controls SYSTEMS SANDBOX.
+           ----------------------------------------- */
+
+        h1 {
+            color: #67e8f9;
+
+            font-size: 52px;
+
+            /* Space between letters */
+            letter-spacing: 5px;
+
+            /* Glowing text effect */
+            text-shadow: 0 0 25px #0891b2;
+        }
+
+
+        /* -----------------------------------------
+           2.3 PARAGRAPHS
+           Controls ordinary text.
+           ----------------------------------------- */
+
+        p {
+            color: #a5b4c8;
+            font-size: 20px;
+        }
+
+
+        /* -----------------------------------------
+           2.4 COMMAND PANEL
+           The section containing our planets.
+           ----------------------------------------- */
+
+        .command-panel {
+            /* Maximum width of the section */
+            max-width: 1000px;
+
+            /* Centre the section horizontally */
+            margin: 70px auto;
+
+            /* Space inside the section */
+            padding: 25px;
+        }
+
+
+        /* Heading inside the command panel */
+        .command-panel h2 {
+            color: #67e8f9;
+            letter-spacing: 3px;
+        }
+
+
+        /* -----------------------------------------
+           2.5 WORLD GRID
+           Arranges our planets side by side.
+           ----------------------------------------- */
+
+        .world-grid {
+            display: grid;
+
+            /* Automatically adjust columns */
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(180px, 1fr)
+            );
+
+            /* Space between planet cards */
+            gap: 20px;
+
+            margin-top: 35px;
+        }
+
+
+        /* -----------------------------------------
+           2.6 WORLD CARDS
+           The boxes containing Earth, Moon and Mars.
+           ----------------------------------------- */
+
+        .world-card {
+            /* Dark blue, slightly transparent background */
+            background: rgba(18, 39, 64, 0.8);
+
+            /* Thin blue border */
+            border: 1px solid #256078;
+
+            /* Rounded corners */
+            border-radius: 15px;
+
+            /* Space inside each card */
+            padding: 30px 15px;
+        }
+
+
+        /* Planet names */
+        .world-card h3 {
+            color: #67e8f9;
+            letter-spacing: 2px;
+        }
+
+
+        /* Smaller descriptions inside planet cards */
+        .world-card p {
+            font-size: 15px;
+        }
+
+
+        /* -----------------------------------------
+           2.7 PLANET ICONS
+           Controls the size of our planet emojis.
+           ----------------------------------------- */
+
+        .planet {
+            font-size: 55px;
+        }
+
+    </style>
+
 </head>
+
+
+<!-- =========================================
+     SECTION 3: BODY
+     HTML controls WHAT appears on our webpage.
+     Everything visible goes here.
+     ========================================= -->
+
 <body>
+
+    <!-- -----------------------------------------
+         3.1 WEBSITE TITLE
+         ----------------------------------------- -->
+
     <h1>SYSTEMS SANDBOX</h1>
+
     <p>Interplanetary Command Center</p>
+
     <p>Our vision playground begins here.</p>
-   /* this is for adding our 3 worlds */ 
-<section class="command-panel">
-    <h2>INTERPLANETARY NETWORK</h2>
-    <p>Explore the infrastructure of our civilization.</p>
 
-    <div class="world-grid">
-        <div class="world-card">
-            <div class="planet">🌍</div>
-            <h3>EARTH</h3>
-            <p>Industry & Launch Systems</p>
+
+    <!-- =========================================
+         SECTION 4: INTERPLANETARY NETWORK
+         This section displays our three worlds.
+         ========================================= -->
+
+    <section class="command-panel">
+
+        <!-- Section heading -->
+        <h2>INTERPLANETARY NETWORK</h2>
+
+        <p>Explore the infrastructure of our civilization.</p>
+
+
+        <!-- Container holding our three planet cards -->
+        <div class="world-grid">
+
+
+            <!-- WORLD 1: EARTH -->
+            <div class="world-card">
+
+                <div class="planet">🌍</div>
+
+                <h3>EARTH</h3>
+
+                <p>Industry &amp; Launch Systems</p>
+
+            </div>
+
+
+            <!-- WORLD 2: MOON -->
+            <div class="world-card">
+
+                <div class="planet">🌕</div>
+
+                <h3>MOON</h3>
+
+                <p>Lunar Settlements</p>
+
+            </div>
+
+
+            <!-- WORLD 3: MARS -->
+            <div class="world-card">
+
+                <div class="planet">🔴</div>
+
+                <h3>MARS</h3>
+
+                <p>Frontier Colonies</p>
+
+            </div>
+
+
         </div>
 
-        <div class="world-card">
-            <div class="planet">🌕</div>
-            <h3>MOON</h3>
-            <p>Lunar Settlements</p>
-        </div>
+    </section>
 
-        <div class="world-card">
-            <div class="planet">🔴</div>
-            <h3>MARS</h3>
-            <p>Frontier Colonies</p>
-        </div>
-    </div>
-</section>
+
+    <!-- =========================================
+         SECTION 5: JAVASCRIPT
+         We will add this later.
+
+         JavaScript will make our website interactive.
+
+         For example:
+         - Clicking planets
+         - Opening information panels
+         - Changing system health
+         - Simulating failures
+         - Running our interplanetary network
+         ========================================= -->
+
 
 </body>
+
 </html>
