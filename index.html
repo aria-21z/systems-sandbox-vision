@@ -23,6 +23,7 @@
          Everything inside <style> is CSS.
          ========================================= -->
 
+     
     <style>
 
         /* -----------------------------------------
@@ -218,6 +219,27 @@
     letter-spacing: 2px;
 }
 
+/* -----------------------------------------
+   INFRASTRUCTURE FACILITIES
+   Styles the facilities inside each world.
+   ----------------------------------------- */
+
+.facility-list {
+    display: grid;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.facility-card {
+    background: #122740;
+    border: 1px solid #256078;
+    border-radius: 10px;
+    padding: 15px;
+    color: #67e8f9;
+    font-size: 16px;
+    text-align: left;
+}
+
     </style>
 
 </head>
@@ -306,6 +328,9 @@
         Click Earth, Moon, or Mars to explore its infrastructure.
     </p>
 
+<!-- Displays infrastructure belonging to the selected world -->
+<div id="facility-list" class="facility-list"></div>
+
 </div>
 
     </section>
@@ -331,6 +356,29 @@
     };
 
 
+// Infrastructure belonging to each world
+const worldFacilities = {
+
+    EARTH: [
+        "Industrial Complex",
+        "Orbital Launch Complex",
+        "Mission Control"
+    ],
+
+    MOON: [
+        "Lunar Habitat",
+        "Oxygen Production Plant",
+        "Solar Power Station"
+    ],
+
+    MARS: [
+        "Mars Colony",
+        "Greenhouse Complex",
+        "Nuclear Power Station"
+    ]
+
+};
+
     // Find all three planet cards
     const worldCards = document.querySelectorAll(".world-card");
 
@@ -354,6 +402,30 @@
             // Change the information panel's description
             document.getElementById("world-description").textContent =
                 worldDescriptions[worldName];
+             
+// Find the area where facilities will appear
+const facilityList = document.getElementById("facility-list");
+
+// Clear the facilities from the previously selected world
+facilityList.innerHTML = "";
+
+// Go through each facility belonging to this world
+worldFacilities[worldName].forEach(function(facility) {
+
+    // Create a new facility card
+    const facilityCard = document.createElement("div");
+
+    // Apply our CSS styling
+    facilityCard.className = "facility-card";
+
+    // Add the facility name and current status
+    facilityCard.textContent = facility + " — ONLINE";
+
+    // Display the card on the webpage
+    facilityList.appendChild(facilityCard);
+
+});
+
 
         }
 
