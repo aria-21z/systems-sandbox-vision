@@ -1,7 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-<style>
+ 
+.command-panel {
+    max-width: 1000px;
+    margin: 70px auto;
+    padding: 25px;
+}
+
+.command-panel h2 {
+    color: #67e8f9;
+    letter-spacing: 3px;
+}
+
+.world-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 35px;
+}
+
+.world-card {
+    background: rgba(18, 39, 64, 0.8);
+    border: 1px solid #256078;
+    border-radius: 15px;
+    padding: 30px 15px;
+}
+
+.world-card h3 {
+    color: #67e8f9;
+    letter-spacing: 2px;
+}
+
+.world-card p {
+    font-size: 15px;
+}
+
+.planet {
+    font-size: 55px;
+}   
+<style> 
+    /* this is for styling, adding the background color etc */
     body {
         background: radial-gradient(
             circle at top,
@@ -38,5 +76,31 @@
     <h1>SYSTEMS SANDBOX</h1>
     <p>Interplanetary Command Center</p>
     <p>Our vision playground begins here.</p>
+   /* this is for adding our 3 worlds */ 
+<section class="command-panel">
+    <h2>INTERPLANETARY NETWORK</h2>
+    <p>Explore the infrastructure of our civilization.</p>
+
+    <div class="world-grid">
+        <div class="world-card">
+            <div class="planet">🌍</div>
+            <h3>EARTH</h3>
+            <p>Industry & Launch Systems</p>
+        </div>
+
+        <div class="world-card">
+            <div class="planet">🌕</div>
+            <h3>MOON</h3>
+            <p>Lunar Settlements</p>
+        </div>
+
+        <div class="world-card">
+            <div class="planet">🔴</div>
+            <h3>MARS</h3>
+            <p>Frontier Colonies</p>
+        </div>
+    </div>
+</section>
+
 </body>
 </html>
