@@ -177,6 +177,47 @@
             font-size: 55px;
         }
 
+/* -----------------------------------------
+   WORLD INTERACTIONS
+   Makes cards look clickable.
+   ----------------------------------------- */
+
+.world-card {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Changes appearance when the mouse hovers */
+.world-card:hover {
+    transform: translateY(-5px);
+    border-color: #67e8f9;
+}
+
+/* Highlight when selected using the keyboard */
+.world-card:focus-visible {
+    outline: 3px solid #67e8f9;
+    outline-offset: 3px;
+}
+
+
+/* -----------------------------------------
+   WORLD INFORMATION PANEL
+   Displays information about selected planets.
+   ----------------------------------------- */
+
+.world-info {
+    background: rgba(18, 39, 64, 0.8);
+    border: 1px solid #256078;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+.world-info h3 {
+    color: #67e8f9;
+    letter-spacing: 2px;
+}
+
     </style>
 
 </head>
@@ -256,22 +297,81 @@
 
         </div>
 
+<!-- This panel displays information about the selected world -->
+<div class="world-info">
+
+    <h3 id="world-name">SELECT A WORLD</h3>
+
+    <p id="world-description">
+        Click Earth, Moon, or Mars to explore its infrastructure.
+    </p>
+
+</div>
+
     </section>
 
 
-    <!-- =========================================
-         SECTION 5: JAVASCRIPT
-         We will add this later.
 
-         JavaScript will make our website interactive.
+<!-- =========================================
+     SECTION 5: JAVASCRIPT
+     Makes our website interactive.
+     ========================================= -->
 
-         For example:
-         - Clicking planets
-         - Opening information panels
-         - Changing system health
-         - Simulating failures
-         - Running our interplanetary network
-         ========================================= -->
+<script>
+
+    // Store information about each world
+    const worldDescriptions = {
+
+        EARTH: "Earth is the industrial heart of our civilization. It contains major factories, launch facilities, and infrastructure supporting interplanetary expansion.",
+
+        MOON: "The Moon hosts lunar settlements, research stations, mining operations, and supply depots connected to Earth.",
+
+        MARS: "Mars is humanity's frontier. Its colonies depend on local production, energy systems, and supply routes from Earth."
+
+    };
+
+
+    // Find all three planet cards
+    const worldCards = document.querySelectorAll(".world-card");
+
+
+    // Give each planet card an action
+    worldCards.forEach(function(card) {
+
+        // Allow keyboard selection as well as mouse clicks
+        card.setAttribute("role", "button");
+        card.setAttribute("tabindex", "0");
+
+        function selectWorld() {
+
+            // Read the planet name from the card
+            const worldName = card.querySelector("h3").textContent;
+
+            // Change the information panel's heading
+            document.getElementById("world-name").textContent =
+                worldName + " — SYSTEM OVERVIEW";
+
+            // Change the information panel's description
+            document.getElementById("world-description").textContent =
+                worldDescriptions[worldName];
+
+        }
+
+        // Run the function when clicked
+        card.addEventListener("click", selectWorld);
+
+        // Also respond to Enter or Space on the keyboard
+        card.addEventListener("keydown", function(event) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                selectWorld();
+            }
+        });
+
+    });
+
+</script>
+
 
 
 </body>
